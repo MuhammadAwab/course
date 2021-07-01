@@ -1,0 +1,95 @@
+void main() {
+  //print("hello");
+  //print(_getSum(10));
+  //learnList();
+  //print(Parent.anotherConstructor(1,2).overriding());
+  //print(Child().overriding());
+  //var data = [{'name':'ali','id':1},{'name':'ahmed','id':2}];
+  //_readDataFromList(data);
+  var stuData = [{'id':1,'marks':70},
+                {'id':2,'marks':80},
+                {'id':3,'marks':50},
+                {'id':4,'marks':85},
+                {'id':5,'marks':65}];
+  //_printStudentMarks(stuData);
+  _asyncMethod();
+}
+
+void _readDataFromList(var data){
+  Map<int,String> tryUI = {1:'def'};
+  List<Map<String,dynamic>> transformData = data;
+  String test = "123";
+  var test2 = "456";
+  int ans = int.parse(test)+int.parse(test2);
+  double ansDouble = double.parse("12.45")+double.parse("23.56");
+  print(ans.toString());
+  print(ansDouble.toString());
+  int lenData = transformData.length;
+  for(int i=0;i<lenData;i++){
+    print(transformData[i]['id']);  
+  }
+}
+
+int _getSum(int till){
+  int sum=0;
+  for(int i=0;i<till;i++){
+      sum = sum + i;
+  }
+ return sum;
+}
+
+void learnList(){
+  var varList = 'abs';
+  List<int> intList = [4,5,6];
+  intList.add(7);
+  intList.forEach((element){
+    print(element);
+  });
+  print(varList);
+}
+
+void learnListDoesntOverload(int overloading){
+  print(overloading);
+}
+
+
+class Parent{
+  int a=0;
+  int b=0;
+  Parent(){
+    
+  }
+  Parent.anotherConstructor(int a,int b){
+    this.a=a;
+    this.b=b;
+  }
+  int overriding(){
+    int ans = (b!=0)?a+b:0;
+    return ans;
+  }
+}
+
+class Child extends Parent{
+  int overriding(){
+    return 2;
+  }
+}
+
+void _printStudentMarks(var studentData){
+  List<Map<String,int>> tSD = studentData;
+  int getLen = tSD.length;
+  for(int index=0;index<getLen;index++){
+    if(int.parse(tSD[index]['marks'].toString())>70){
+      print(tSD[index]['id']);
+    }
+  }
+}
+
+void _asyncMethod() async{
+    await Future.delayed(Duration(seconds:4)).then((value){
+      print('Delay Called');
+    });
+    await Future.delayed(Duration(seconds:4)).whenComplete((){
+      print('after complete');
+    });
+}
